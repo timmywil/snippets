@@ -1,0 +1,23 @@
+{
+  "name": "snippets",
+  "version": "0.1.0",
+  "description": "Some random snippets for myself",
+  "dependencies": {
+    "babel-cli": "^6.6.0",
+    "coffee-script": "^1.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "timmywil",
+    "snippets"
+  ],
+  "author": "Timmy Willison <timmywillisn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "timmywil/snippets.git"
+  },
+  "license": "MIT"
+}
