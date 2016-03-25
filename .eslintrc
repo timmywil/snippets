@@ -1,5 +1,8 @@
 {
   "extends": "opentable",
+  "rules": {
+    "max-len": 0
+  },
   "globals": {
     "angular": false,
     "_": false

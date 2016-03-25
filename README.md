@@ -17,10 +17,11 @@ $ cat /path/to/changelog.txt | ./convert-changelog.js > new-changelog.txt
 Convert a CoffeeScript project to something close to OpenTable's ES2015 syntax.
 
 This uses the coffeescript module, [lebab](https://github.com/mohebifar/lebab),
-and a bunch of regex replaces (not the most stable way, but it was the quick and dirty solution).
+and [eslint's fix option](http://eslint.org/docs/user-guide/command-line-interface#fix).
 
 ```sh
-$ npm run coffee2ot -- "globPattern/**/*.coffee"
+$ npm i -g snippets
+$ coffee2ot "globPattern/**/*.coffee"
 ```
 
 **Note: quotes are required unless it's one file.**
