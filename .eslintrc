@@ -1,0 +1,7 @@
+{
+  "extends": "opentable",
+  "globals": {
+    "angular": false,
+    "_": false
+  }
+}
