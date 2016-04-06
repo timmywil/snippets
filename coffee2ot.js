@@ -145,6 +145,8 @@ const converter = {
 
   convertSource(options = { ignore: ["node_modules/**/*", ".git/**/*"] }) {
     console.log("Converting ", this.files)
+    if (!this.files) return BPromise.resolve()
+
     return new BPromise((resolve, reject) => {
       glob(this.files, options, (err, files) => {
         if (err) {
@@ -152,7 +154,7 @@ const converter = {
           return
         }
         console.log("Found files ", files)
-        Promise.all(files.map((file) =>
+        BPromise.all(files.map((file) =>
           this.read(file).then((fileData) => this.convertFile(file, fileData))
         )).then(resolve, reject)
       })

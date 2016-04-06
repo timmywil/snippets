@@ -159,6 +159,8 @@ var converter = {
     var options = arguments.length <= 0 || arguments[0] === undefined ? { ignore: ["node_modules/**/*", ".git/**/*"] } : arguments[0];
 
     console.log("Converting ", this.files);
+    if (!this.files) return _bluebird2.default.resolve();
+
     return new _bluebird2.default(function (resolve, reject) {
       (0, _glob2.default)(_this3.files, options, function (err, files) {
         if (err) {
@@ -166,7 +168,7 @@ var converter = {
           return;
         }
         console.log("Found files ", files);
-        Promise.all(files.map(function (file) {
+        _bluebird2.default.all(files.map(function (file) {
           return _this3.read(file).then(function (fileData) {
             return _this3.convertFile(file, fileData);
           });
