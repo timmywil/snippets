@@ -23,6 +23,7 @@ const converter = {
       .then(() => this.addEslintrc())
       .then(() => this.addTestEslintrc())
       .then(() => this.addBabelrc())
+      .then(() => this.addEditorConfig())
       .then(() => this.convertSource())
   },
 
@@ -123,6 +124,22 @@ const converter = {
       presets: ["es2015-loose"]
     }
     return this.writeJson("./.babelrc", rc)
+  },
+
+  addEditorConfig() {
+    const config = `
+# http://EditorConfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+`
+    return this.write("./.editorconfig", config)
   },
 
   convertCoffee(fileData) {

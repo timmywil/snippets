@@ -52,6 +52,8 @@ var converter = {
     }).then(function () {
       return _this.addBabelrc();
     }).then(function () {
+      return _this.addEditorConfig();
+    }).then(function () {
       return _this.convertSource();
     });
   },
@@ -143,6 +145,10 @@ var converter = {
       presets: ["es2015-loose"]
     };
     return this.writeJson("./.babelrc", rc);
+  },
+  addEditorConfig: function addEditorConfig() {
+    var config = "\n# http://EditorConfig.org\nroot = true\n\n[*]\nindent_style = space\nindent_size = 2\nend_of_line = lf\ncharset = utf-8\ntrim_trailing_whitespace = true\ninsert_final_newline = true\n";
+    return this.write("./.editorconfig", config);
   },
   convertCoffee: function convertCoffee(fileData) {
     return _coffeeScript2.default.compile(fileData, { bare: true });
