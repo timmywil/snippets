@@ -1,5 +1,7 @@
 # snippets
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/timmywil/snippets.svg)](https://greenkeeper.io/)
+
 Just some random snippets/scripts that I want to keep in a repo.
 
 To see a list of scripts, run `npm run`.
