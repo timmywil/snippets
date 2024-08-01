@@ -2,6 +2,7 @@
   "name": "snippets",
   "version": "0.1.0",
   "type": "module",
+  "private": true,
   "description": "Some random snippets for myself",
   "keywords": [
     "timmywil",
@@ -13,7 +14,5 @@
     "url": "timmywil/snippets.git"
   },
   "scripts": {},
-  "dependencies": {},
-  "devDependencies": {},
   "license": "MIT"
 }
