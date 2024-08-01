@@ -1,6 +1,7 @@
 {
   "name": "snippets",
   "version": "0.1.0",
+  "type": "module",
   "description": "Some random snippets for myself",
   "keywords": [
     "timmywil",
@@ -11,28 +12,8 @@
     "type": "git",
     "url": "timmywil/snippets.git"
   },
-  "scripts": {
-    "build": "echo '#!/usr/bin/env node' > bin/coffee2ot.js && babel coffee2ot.js >> bin/coffee2ot.js",
-    "test": "eslint .",
-    "test:coffee2ot:clean": "cd test && rm -rf *.js *.json .*rc",
-    "test:coffee2ot": "npm run test:coffee2ot:clean && cd test && cp .package package.json && ../bin/coffee2ot.js \"**/*.coffee\""
-  },
-  "bin": {
-    "coffee2ot": "./bin/coffee2ot.js"
-  },
-  "dependencies": {
-    "babel-cli": "^6.6.0",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-es2015-loose": "^7.0.0",
-    "bluebird": "^3.3.3",
-    "coffee-script": "^1.10.0",
-    "glob": "^7.0.0",
-    "lebab": "^1.0.0",
-    "lodash": "^4.6.1"
-  },
-  "devDependencies": {
-    "eslint": "^2.2.0",
-    "eslint-config-opentable": "^2.0.0"
-  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
   "license": "MIT"
 }

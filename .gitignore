@@ -1,6 +1,1 @@
 node_modules
-package-lock.json
-yarn.lock
-/test/*.js
-/test/*.json
-/test/.*rc
