@@ -1,18 +1,20 @@
 {
-  "name": "snippets",
-  "version": "0.1.0",
-  "type": "module",
-  "private": true,
-  "description": "Some random snippets for myself",
-  "keywords": [
-    "timmywil",
-    "snippets"
-  ],
-  "author": "Timmy Willison <timmywillisn@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "timmywil/snippets.git"
-  },
-  "scripts": {},
-  "license": "MIT"
+    "name": "snippets",
+    "version": "0.1.0",
+    "type": "module",
+    "private": true,
+    "description": "Some random snippets for myself",
+    "keywords": [
+        "timmywil",
+        "snippets"
+    ],
+    "author": "Timmy Willison <timmywillisn@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "timmywil/snippets.git"
+    },
+    "scripts": {
+        "test": "node --test"
+    },
+    "license": "MIT"
 }

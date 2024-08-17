@@ -1,49 +1,79 @@
 import assert from 'node:assert'
+import { MinHeap } from './heap.js'
 
-const moves = [
-    [-2, -1],
-    [-1, -2],
-    [1, -2],
-    [2, -1],
-    [-2, 1],
-    [-1, 2],
-    [1, 2],
-    [2, 1]
-]
-function getMoves(x, y) {
-    return moves.map(([a, b]) => [x + a, y + b])
-}
-function getKnightShortestPath(x, y) {
-    const queue = [[0, 0]]
-    const visited = new Set(['0,0'])
-    let path = 0
-    let len
-
-    while ((len = queue.length)) {
-        for (let i = 0; i < len; i++) {
-            const [row, col] = queue.shift()
-            if (row === x && col === y) return path
-
-            for (const move of getMoves(row, col)) {
-                const key = move.join(',')
-                if (!visited.has(key)) {
-                    queue.push(move)
-                    // At this point we know another path
-                    // reached this position sooner,
-                    // so we don't need to continue
-                    visited.add(key)
-                }
-            }
+function findInDegree(graph) {
+    const indegree = new Map()
+    for (const node of graph.keys()) {
+        indegree.set(node, 0)
+    }
+    for (const node of graph.keys()) {
+        for (const neighbor of graph.get(node)) {
+            indegree.set(neighbor, indegree.get(neighbor) + 1)
         }
+    }
+    return indegree
+}
 
-        path++
+function topoSort(graph) {
+    const result = []
+    const heap = new MinHeap()
+    const indegree = findInDegree(graph)
+
+    for (const node of indegree.keys()) {
+        if (indegree.get(node) === 0) {
+            heap.push(node)
+        }
     }
 
-    return path
+    while (heap.size) {
+        const node = heap.pop()
+        result.push(node)
+
+        for (const neighbor of graph.get(node)) {
+            indegree.set(neighbor, indegree.get(neighbor) - 1)
+
+            if (indegree.get(neighbor) === 0) {
+                heap.push(neighbor)
+            }
+        }
+    }
+    return result.length === graph.size ? result : []
 }
 
-assert.deepStrictEqual(getKnightShortestPath(2, 1), 1)
-assert.deepStrictEqual(getKnightShortestPath(5, 5), 4)
-assert.deepStrictEqual(getKnightShortestPath(1, 1), 2)
+function alienOrder(words) {
+    const graph = new Map()
+    for (const word of words) {
+        for (const letter of word) {
+            if (!graph.has(letter)) {
+                // Use a set to avoid duplicates
+                graph.set(letter, new Set())
+            }
+        }
+    }
+
+    // Because the list of words is sorted
+    // lexographically, we only need to
+    // check the adjacent word.
+    // Words prior to that already differ
+    // more than the adjacent word.
+    let prev = words[0]
+    for (const word of words.slice(1)) {
+        for (let i = 0; i < word.length && i < prev.length; i++) {
+            if (prev[i] !== word[i]) {
+                graph.get(prev[i]).add(word[i])
+                break
+            }
+        }
+        prev = word
+    }
+
+    return topoSort(graph).join('')
+}
+
+assert.deepStrictEqual(alienOrder(['wrt', 'wrf', 'er', 'ett', 'rftt']), 'wertf')
+assert.deepStrictEqual(
+    alienOrder(['she', 'sell', 'seashell', 'seashore', 'seahorse', 'on', 'a']),
+    'lnrsheoa'
+)
 
 console.log('Tests passed')
