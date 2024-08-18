@@ -16,6 +16,12 @@ function findInDegree(graph) {
 
 function topoSort(graph) {
     const result = []
+
+    // Part of this problem is returning
+    // the English-sorted result if there
+    // are multiple possible answers.
+    // We use a heap to avoid having
+    // to sort the whole queue.
     const heap = new MinHeap()
     const indegree = findInDegree(graph)
 
