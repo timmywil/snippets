@@ -9,8 +9,8 @@ export class MinHeap {
     constructor() {
         this.heap = []
     }
-    push(item, priority) {
-        const node = new HeapNode(item, priority)
+    push(value, priority) {
+        const node = new HeapNode(value, priority)
         const heap = this.heap
 
         // Place at the end, then bubble up
@@ -25,7 +25,7 @@ export class MinHeap {
             parentIndex = Math.floor((index - 1) / 2)
         }
     }
-    pop() {
+    popNode() {
         if (!this.size) return
         const heap = this.heap
 
@@ -57,7 +57,10 @@ export class MinHeap {
             index = min
         }
 
-        return node.value
+        return node
+    }
+    pop() {
+        return this.popNode()?.value
     }
     peak() {
         return this.heap[0]?.value
