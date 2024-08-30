@@ -5,7 +5,7 @@
 import assert from 'node:assert'
 import { MinHeap } from './heap.js'
 
-// Gets the shortest path to all nodes
+// Get the shortest path to all nodes
 function shortestPath(graph, a, b) {
     function getNeighbors(node) {
         return graph[node]
@@ -42,8 +42,8 @@ function shortestPath(graph, a, b) {
     return result === Number.MAX_VALUE ? -1 : result
 }
 
-// Gets the shortest path to the target
-// and returns early
+// Get the shortest path to the target
+// and return early
 function uniformCostSearch(graph, a, b) {
     function getNeighbors(node) {
         return graph[node]
