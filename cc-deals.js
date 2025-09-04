@@ -3,7 +3,7 @@
 // I'd normally use swc, but it requires installing deps first.
 javascript: (function () {
     function randomDelay() {
-        return Math.random() * 1000 + 300
+        return Math.random() * 800 + 400
     }
     const btns = [
         ...document.querySelectorAll('button[title="Add to Card"]'), // AMEX
@@ -23,7 +23,8 @@ javascript: (function () {
     }
     function add() {
         // Chase requires going to a new page
-        const chase = document.querySelector('[data-cy="commerce-tile-button"]')
+        // Activate chase deals in reverse order
+        const chase = [...document.querySelectorAll('[data-cy="commerce-tile-button"]')].pop()
         if (chase) {
             chase.click()
             return setTimeout(goBack, randomDelay())
