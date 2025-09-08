@@ -3,7 +3,7 @@
 // I'd normally use swc, but it requires installing deps first.
 javascript: (function () {
     function randomDelay() {
-        return Math.random() * 800 + 400
+        return Math.random() * 500 + 750
     }
     const btns = [
         ...document.querySelectorAll('button[title="Add to Card"]'), // AMEX
