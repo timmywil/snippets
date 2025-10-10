@@ -6,7 +6,7 @@ javascript: (function () {
         return Math.random() * 500 + 750
     }
     const btns = [
-        ...document.querySelectorAll('button[title="Add to Card"]'), // AMEX
+        ...document.querySelectorAll('[data-testid="merchantOfferListAddButton"]'), // AMEX
         ...document.querySelectorAll('[data-testid="deal-tile"]') // Wells Fargo
     ]
     function goBack() {
