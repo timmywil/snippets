@@ -24,7 +24,11 @@ javascript: (function () {
     function add() {
         // Chase requires going to a new page
         // Activate chase deals in reverse order
-        const chase = [...document.querySelectorAll('[data-cy="commerce-tile-button"]')].pop()
+        const chase = [
+            ...document.querySelectorAll(
+                '[data-cy="commerce-tile"]:has([data-cy="commerce-tile-button"]'
+            )
+        ].pop()
         if (chase) {
             chase.click()
             return setTimeout(goBack, randomDelay())
